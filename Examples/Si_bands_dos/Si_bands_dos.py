@@ -1,5 +1,5 @@
 import numpy as np
-import CASTEP_bands as cb
+from CASTEPbands import Spectral
 import matplotlib.pyplot as plt
 import matplotlib
 import matplotlib.gridspec as gridspec
@@ -22,22 +22,22 @@ dos_ax = fig.add_subplot(gs[1])
 fontsize=20
 
 # Initialise the bands data
-Fe_bands  = cb.Spectral('Fe_bands',zero_fermi=True)
+Si_bands  = Spectral.Spectral('Si_bands',zero_fermi=True)
 # Initialise the dos dat
-Fe_dos  = cb.Spectral('Fe_dos',zero_fermi=True)
+Si_dos  = Spectral.Spectral('Si_dos',zero_fermi=True)
 
 # Band structure axis, add some customisations
 
-Fe_bands.plot_bs(bs_ax,
+Si_bands.plot_bs(bs_ax,
                  mono=True,
                  mono_color='blue')
 
 # Dos axis, turned on its side
-Fe_dos.plot_dos(dos_ax,
+Si_dos.plot_dos(dos_ax,
                 swap_axes=True,
                 color='blue',
                 labely = False)
 
 plt.tight_layout()
-plt.savefig("Fe_bands_dos.png")
+plt.savefig("Si_bands_dos.png")
 

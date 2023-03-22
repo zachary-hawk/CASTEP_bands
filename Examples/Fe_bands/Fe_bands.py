@@ -1,5 +1,5 @@
 import numpy as np
-import CASTEP_bands as cb
+from CASTEPbands import Spectral
 import matplotlib.pyplot as plt
 import matplotlib
 
@@ -14,7 +14,7 @@ fig,ax=plt.subplots()
 fontsize=20
 
 # Initialise the bands data
-Fe_bands  = cb.Spectral('Fe',zero_fermi=True)
+Fe_bands  = Spectral.Spectral('Fe',zero_fermi=True)
 
 # Plot simple band structure
 Fe_bands.plot_bs(ax,
