@@ -21,7 +21,7 @@ Fe_bands.plot_dos(ax,
                   pdos=True,
                   Elim=[-7,20],
                   dE=1e-1,
-                  pdos_colors = ['red','green','blue','gold']) # We have 4 angular momenta, s,p,d,f so specify 4 colours
+                  pdos_colors = ['blue','red','green','black']) # We have 4 angular momenta, s,p,d,f so specify 4 colours
 
 plt.tight_layout()
 plt.savefig("Fe_dos.png")
