@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Hawkhead
+  given-names: Zachary
+orcid: https://orcid.org/0000-0001-6263-5237
+title: "CASTEPbands: A CASTEP module for plotting bands tructures and DOS"
+version: 0.0.
+date-released: 2022-03-22
+url: https://github.com/zachary-hawk/CASTEP_bands/
