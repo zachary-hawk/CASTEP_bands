@@ -1,0 +1,20 @@
+%block lattice_abc
+2.856 2.856 2.856
+90.0 90.0 90.0
+%endblock lattice_abc
+
+%block positions_frac
+Fe 0.0 0.0 0.0 spin=2
+Fe 0.5 0.5 0.5 spin=2
+%endblock positions_frac
+
+symmetry_generate
+
+%BLOCK SPECTRAL_KPOINT_PATH
+0.00000 0.00000 0.00000 # G
+0.00000 0.50000 0.00000 # X
+0.50000 0.50000 0.00000 # M
+0.00000 0.00000 0.00000 # G
+0.50000 0.50000 0.50000 # R
+0.00000 0.50000 0.00000 # X
+%ENDBLOCK SPECTRAL_KPOINT_PATH

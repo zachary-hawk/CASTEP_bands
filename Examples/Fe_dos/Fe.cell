@@ -1,0 +1,13 @@
+%block lattice_abc
+2.856 2.856 2.856
+90.0 90.0 90.0
+%endblock lattice_abc
+
+%block positions_frac
+Fe 0.0 0.0 0.0 spin=2
+Fe 0.5 0.5 0.5 spin=2
+%endblock positions_frac
+
+symmetry_generate
+
+spectral_kpoint_mp_grid : 9 9 9

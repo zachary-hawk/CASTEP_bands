@@ -1,0 +1,5 @@
+task : Spectral
+spectral_task : bandstructure
+
+xc_functional : lda
+

@@ -1,0 +1,7 @@
+task : Spectral
+spectral_task : bandstructure
+
+spin_polarised : T
+
+# Calculate the Mulliken projections
+pdos_calculate_weights :  T

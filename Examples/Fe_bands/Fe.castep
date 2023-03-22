@@ -1,0 +1,2319 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 23.1 |
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates, M. Payne      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne,          |
+ | R. J. Maurer, J. C. Womack, J. Dziedzic,        |
+ | A. Bartok-Partay, L. LeBlanc, T. K. Stenczel,   |
+ | J. Kermode, S. Sturniolo, B. Shi, B. Durham     |
+ | M. Evans, M. J. Smith                           |
+ |                                                 |
+ | Copyright (c) 2000 - 2022                       |
+ |                                                 |
+ |     Distributed under license from Cambridge    |
+ |     Enterprise for academic use only.           |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ |              http://www.castep.org              |
+ |                                                 |
+ +-------------------------------------------------+
+
+
+
+ Compiled for darwin_x86_64_gfortran10 on Wed, 01 Feb 2023 22:43:52 +0000
+ from code version 74a6ee138+  default  Tue Jan 31 17:20:01 2023 +0000
+ Compiler: GNU Fortran 12.2.0; Optimisation: fast
+ Comms   : Open MPI v4.1.4
+ MATHLIBS: openblas (LAPACK version 3.9.0)
+ FFT Lib : fftw3 version fftw-3.3.8
+ Fundamental constants values: CODATA 2018
+
+ Run started: Wed, 22 Mar 2023 12:15:40 +0000
+
+ Atomic calculation performed for Fe: 1s2 2s2 2p6 3s2 3p6 3d6 4s2
+
+ Converged in 99 iterations to an ae energy of -34563.484 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 22-03-2023   |                
+   ------------------------------------------------------------                
+   | Element: Fe Ionic charge:  8.00 Level of theory: LDA     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3d              6.000           -0.285        |                
+   |            4s              2.000           -0.202        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.202   2.399     qc      0         |                
+   |          2      0    0.250   2.399     qc      0         |                
+   |          3      1    0.000   2.399     qc      0         |                
+   |          4      1    0.250   2.399     qc      0         |                
+   |          5      2   -0.285   1.997     qc      0         |                
+   |          6      2    0.250   1.997     qc      0         |                
+   |         loc     3    0.000   2.399     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.000                       |                
+   | Partial core correction Rc = 1.000                       |                
+   ------------------------------------------------------------                
+   | "3|2.4|2.4|1.0|8|9|10|40:41:32U2U2(qc=5.5)"              |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+ Calculation not parallelised.
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : Fe.check
+ type of calculation                            : Electronic Spectroscopy
+ stress calculation                             : off
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : off
+ polarisation (Berry phase) analysis            : off
+ molecular orbital projected DOS                : off
+ deltaSCF calculation                           : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : both castep_bin and check files
+ random number generator seed                   :  121540461
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : Local Density Approximation
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ basis set accuracy                             : FINE
+ finite basis set correction                    : none
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  16.00    
+ net charge of system                           :  0.000    
+ net spin   of system                           :  4.000    
+ number of  up  spins                           :  10.00    
+ number of down spins                           :  6.000    
+ treating system as spin-polarized
+ number of bands                                :         14
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as metallic with density mixing treatment of electrons,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-04   eV
+ eigen-energy convergence tolerance             : 0.1000E-05   eV
+ max force / atom convergence tol.              : ignored
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Broyden
+ max. length of mixing history                  :         20
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+ Population analysis output                     : summary and pdos components
+ Partial DOS weights calculated
+
+ ********************* Electronic Spectroscopy Parameters **********************
+  
+ electronic spectroscopy with theory level      : DFT       
+ spectroscopy calculation                       : band structure
+ max. number of iterations                      :         60
+ max. steps per iteration                       :          5
+ number of bands / k-point                      :         33
+ band convergence tolerance                     : 0.1000E-05   eV
+ write orbitals file                            : off
+
+ *******************************************************************************
+  
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+     2.8560000     0.0000000     0.0000000        2.199994855  -0.000000000  -0.000000000
+     0.0000000     2.8560000     0.0000000        0.000000000   2.199994855  -0.000000000
+     0.0000000     0.0000000     2.8560000        0.000000000   0.000000000   2.199994855
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.856000          alpha =   90.000000
+                    b =      2.856000          beta  =   90.000000
+                    c =      2.856000          gamma =   90.000000
+
+                       Current cell volume =            23.295638       A**3
+                                   density =             4.794460   AMU/A**3
+                                           =             7.961388     g/cm^3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =    2
+                      Total number of species in cell =    1
+                        Max number of any one species =    2
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  Fe           1         0.000000   0.000000   0.000000   x 
+            x  Fe           2         0.500000   0.500000   0.500000   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                         No user defined ionic velocities
+
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+
+                               Mass of species in AMU
+                                    Fe   55.8450000
+
+                          Electric Quadrupole Moment (Barn)
+                                    Fe    0.1600000 Isotope 57
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+         |  Element    Atom         Initial            Initial magnetic       |
+         |            Number    spin polarization        moment (uB)     Fix? |
+         |--------------------------------------------------------------------|
+         | Fe             1         0.250000              2.000       F       |
+         | Fe             2         0.250000              2.000       F       |
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                          Files used for pseudopotentials:
+                                    Fe 3|2.4|2.4|1.0|8|9|10|40:41:32U2U2(qc=5.5)
+
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  4  4  4
+                            with an offset of   0.000  0.000  0.000
+                       Number of kpoints used =             4
+
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+
+                      Cell is a supercell containing 2 primitive cells
+                      Maximum deviation from symmetry = 0.158540E-15     ANG
+
+                      Number of symmetry operations   =          96
+                      Number of ionic constraints     =           3
+                      Point group of crystal =    32: Oh, m-3m, 4/m -3 2/m
+                      Space group of crystal =   229: Im-3m, -I 4 2 3
+
+             Set iprint > 1 for details on symmetry rotations/translations
+
+                         Centre of mass is constrained
+             Set iprint > 1 for details of linear ionic constraints
+
+                         Number of cell constraints= 5
+                         Cell constraints are:  1 1 1 0 0 0
+
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead        0.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                               89.1 MB         0.0 MB |
+| Electronic energy minimisation requirements           2.0 MB         0.0 MB |
+| Force calculation requirements                        0.7 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process           91.2 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating approximate eigenstates for fixed initial Hamiltonian
+Cut-off for approx. calculation is  119.774 eV
+Resetting cut-off to  272.114 eV
+Calculating total energy with cut-off of  272.114 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.77953011E+003  0.00000000E+000                         4.61  <-- SCF
+      1  -1.71363874E+003  2.19789498E+000  -3.29456845E+001       4.75  <-- SCF
+      2  -1.72217487E+003  1.19140332E+000   4.26806345E+000       4.89  <-- SCF
+      3  -1.72217766E+003  1.19137239E+000   1.39776134E-003       5.00  <-- SCF
+      4  -1.73038295E+003  1.03116092E+001   4.10264520E+000       5.12  <-- SCF
+      5  -1.73045179E+003  1.03139700E+001   3.44193853E-002       5.24  <-- SCF
+      6  -1.71567860E+003  5.25828660E+000  -7.38659612E+000       5.36  <-- SCF
+      7  -1.71570745E+003  5.25949951E+000   1.44232508E-002       5.47  <-- SCF
+      8  -1.71569727E+003  4.83931981E+000  -5.08965309E-003       5.59  <-- SCF
+      9  -1.71570139E+003  4.88966259E+000   2.06281809E-003       5.71  <-- SCF
+     10  -1.71572373E+003  4.78856308E+000   1.11678912E-002       5.84  <-- SCF
+     11  -1.71572763E+003  4.74927261E+000   1.94947545E-003       5.95  <-- SCF
+     12  -1.71572947E+003  4.74870312E+000   9.22196984E-004       6.07  <-- SCF
+     13  -1.71573033E+003  4.75989840E+000   4.29571414E-004       6.18  <-- SCF
+     14  -1.71573036E+003  4.74684461E+000   1.22306301E-005       6.27  <-- SCF
+     15  -1.71573035E+003  4.75291199E+000  -5.36349445E-006       6.34  <-- SCF
+     16  -1.71573035E+003  4.75327730E+000   7.74560971E-008       6.42  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Integrated Spin Density     =     4.24442     hbar/2
+Integrated |Spin Density|   =     4.38486     hbar/2
+ 
+Final energy, E             =  -1715.680233766     eV
+Final free energy (E-TS)    =  -1715.730345871     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1715.705289819     eV
+ 
+
+Writing analysis data to Fe.castep_bin
+
+Writing model to Fe.check
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+|                                               ----------------------------- |
+| Approx. total storage required per process          103.2 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+  =====================================================================
+  +                                                                   +
+  +                 Calculation of Spectral Properties                +
+  +                                                                   +
+  =====================================================================
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        1 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        2 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        3 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        4 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        5 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        6 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        7 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        8 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        9 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       10 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       11 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       12 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       13 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       14 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       15 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       16 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       17 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       18 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       19 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       20 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       21 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       22 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       23 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       24 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       25 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       26 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       27 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       28 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       29 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       30 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       31 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       32 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       33 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       34 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       35 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       36 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       37 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       38 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       39 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       40 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       41 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       42 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       43 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       44 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       45 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       46 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       47 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       48 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       49 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       50 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       51 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       52 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       53 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       54 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       55 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       56 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       57 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       58 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       59 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       60 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       61 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       62 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       63 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       64 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       65 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       66 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       67 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       68 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       69 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       70 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        1 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        2 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        3 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        4 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        5 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        6 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        7 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        8 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        9 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       10 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       11 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       12 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       13 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       14 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       15 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       16 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       17 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       18 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       19 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       20 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       21 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       22 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       23 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       24 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       25 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       26 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       27 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       28 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       29 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       30 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       31 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       32 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       33 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       34 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       35 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       36 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       37 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       38 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       39 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       40 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       41 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       42 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       43 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       44 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       45 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       46 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       47 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       48 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       49 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       50 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       51 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       52 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       53 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       54 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       55 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       56 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       57 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       58 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       59 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       60 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       61 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       62 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       63 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       64 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       65 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       66 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       67 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       68 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       69 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       70 of       70 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Total time to compute matrix elements             74.11 sec |<-- SPEC
+  
+
+ ******************** Symmetrised Forces ********************
+ *                                                          *
+ *               Cartesian components (eV/A)                *
+ * -------------------------------------------------------- *
+ *                         x            y            z      *
+ *                                                          *
+ * Fe              1      0.00000      0.00000      0.00000 *
+ * Fe              2      0.00000      0.00000      0.00000 *
+ *                                                          *
+ ************************************************************
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+Charge spilling parameter for spin component 1 = 0.11%
+Charge spilling parameter for spin component 2 = 0.36%
+
+                   Orbital Populations                  
+  ---------------------------------------------------------------
+     Ion    Atom   Orbital              Up        Down      Spin
+  ---------------------------------------------------------------
+     Fe     1      Dzz                  0.920     0.290     0.631
+     Fe     1      Dzy                  0.896     0.518     0.379
+     Fe     1      Dzx                  0.830     0.526     0.304
+     Fe     1      Dxx-yy               0.974     0.382     0.592
+     Fe     1      Dxy                  0.828     0.489     0.339
+     Fe     1      S                    0.336     0.352    -0.016
+     Fe     1      Px                   0.042     0.055    -0.012
+     Fe     1      Py                   0.110     0.148    -0.038
+     Fe     1      Pz                   0.124     0.178    -0.054
+     Fe     2      Dzz                  0.921     0.287     0.634
+     Fe     2      Dzy                  0.896     0.520     0.376
+     Fe     2      Dzx                  0.830     0.529     0.301
+     Fe     2      Dxx-yy               0.974     0.379     0.595
+     Fe     2      Dxy                  0.827     0.493     0.335
+     Fe     2      S                    0.336     0.352    -0.016
+     Fe     2      Px                   0.042     0.055    -0.012
+     Fe     2      Py                   0.110     0.149    -0.039
+     Fe     2      Pz                   0.124     0.178    -0.054
+  ---------------------------------------------------------------
+                           Total:      10.122     5.878     4.244
+  ---------------------------------------------------------------
+
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion Spin      s       p       d       f      Total   Charge(e)   Spin(hbar/2)
+==============================================================================================
+  Fe              1   up:     0.336   0.276   4.448   0.000   5.061     0.000        2.122
+                  1   dn:     0.352   0.381   2.206   0.000   2.939
+  Fe              2   up:     0.336   0.276   4.448   0.000   5.061     0.000        2.122
+                  2   dn:     0.352   0.381   2.206   0.000   2.939
+==============================================================================================
+
+                 Bond                   Population        Spin       Length (A)
+================================================================================
+              Fe 1 -- Fe 2                   1.65        -0.14          2.47337
+================================================================================
+
+
+Writing analysis data to Fe.castep_bin
+
+Writing model to Fe.check
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ Fe.bib
+ 
+Initialisation time =      4.12 s
+Calculation time    =     77.30 s
+Finalisation time   =      0.01 s
+Total time          =     81.43 s
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 23.1 |
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates, M. Payne      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne,          |
+ | R. J. Maurer, J. C. Womack, J. Dziedzic,        |
+ | A. Bartok-Partay, L. LeBlanc, T. K. Stenczel,   |
+ | J. Kermode, S. Sturniolo, B. Shi, B. Durham     |
+ | M. Evans, M. J. Smith                           |
+ |                                                 |
+ | Copyright (c) 2000 - 2022                       |
+ |                                                 |
+ |     Distributed under license from Cambridge    |
+ |     Enterprise for academic use only.           |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ |              http://www.castep.org              |
+ |                                                 |
+ +-------------------------------------------------+
+
+
+
+ Compiled for darwin_x86_64_gfortran10 on Wed, 01 Feb 2023 22:43:52 +0000
+ from code version 74a6ee138+  default  Tue Jan 31 17:20:01 2023 +0000
+ Compiler: GNU Fortran 12.2.0; Optimisation: fast
+ Comms   : Open MPI v4.1.4
+ MATHLIBS: openblas (LAPACK version 3.9.0)
+ FFT Lib : fftw3 version fftw-3.3.8
+ Fundamental constants values: CODATA 2018
+
+ Run started: Wed, 22 Mar 2023 12:20:16 +0000
+
+ Atomic calculation performed for Fe: 1s2 2s2 2p6 3s2 3p6 3d6 4s2
+
+ Converged in 99 iterations to an ae energy of -34563.484 eV
+
+   ============================================================                
+   | Pseudopotential Report - Date of generation 22-03-2023   |                
+   ------------------------------------------------------------                
+   | Element: Fe Ionic charge:  8.00 Level of theory: LDA     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3d              6.000           -0.285        |                
+   |            4s              2.000           -0.202        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.202   2.399     qc      0         |                
+   |          2      0    0.250   2.399     qc      0         |                
+   |          3      1    0.000   2.399     qc      0         |                
+   |          4      1    0.250   2.399     qc      0         |                
+   |          5      2   -0.285   1.997     qc      0         |                
+   |          6      2    0.250   1.997     qc      0         |                
+   |         loc     3    0.000   2.399     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.000                       |                
+   | Partial core correction Rc = 1.000                       |                
+   ------------------------------------------------------------                
+   | "3|2.4|2.4|1.0|8|9|10|40:41:32U2U2(qc=5.5)"              |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+ Calculation parallelised over 4 processes.
+ Data is distributed by k-point(4-way)
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : Fe.check
+ type of calculation                            : Electronic Spectroscopy
+ stress calculation                             : off
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : off
+ polarisation (Berry phase) analysis            : off
+ molecular orbital projected DOS                : off
+ deltaSCF calculation                           : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : both castep_bin and check files
+ random number generator seed                   :  122016816
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : Local Density Approximation
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ basis set accuracy                             : FINE
+ finite basis set correction                    : none
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  16.00    
+ net charge of system                           :  0.000    
+ net spin   of system                           :  4.000    
+ number of  up  spins                           :  10.00    
+ number of down spins                           :  6.000    
+ treating system as spin-polarized
+ number of bands                                :         14
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as metallic with density mixing treatment of electrons,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-04   eV
+ eigen-energy convergence tolerance             : 0.1000E-05   eV
+ max force / atom convergence tol.              : ignored
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Broyden
+ max. length of mixing history                  :         20
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+ Population analysis output                     : summary and pdos components
+ Partial DOS weights calculated
+
+ ********************* Electronic Spectroscopy Parameters **********************
+  
+ electronic spectroscopy with theory level      : DFT       
+ spectroscopy calculation                       : band structure
+ max. number of iterations                      :         60
+ max. steps per iteration                       :          5
+ number of bands / k-point                      :         33
+ band convergence tolerance                     : 0.1000E-05   eV
+ write orbitals file                            : off
+
+ *******************************************************************************
+  
+
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+     2.8560000     0.0000000     0.0000000        2.199994855  -0.000000000  -0.000000000
+     0.0000000     2.8560000     0.0000000        0.000000000   2.199994855  -0.000000000
+     0.0000000     0.0000000     2.8560000        0.000000000   0.000000000   2.199994855
+
+                       Lattice parameters(A)       Cell Angles
+                    a =      2.856000          alpha =   90.000000
+                    b =      2.856000          beta  =   90.000000
+                    c =      2.856000          gamma =   90.000000
+
+                       Current cell volume =            23.295638       A**3
+                                   density =             4.794460   AMU/A**3
+                                           =             7.961388     g/cm^3
+
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =    2
+                      Total number of species in cell =    1
+                        Max number of any one species =    2
+
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  Fe           1         0.000000   0.000000   0.000000   x 
+            x  Fe           2         0.500000   0.500000   0.500000   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                         No user defined ionic velocities
+
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+
+                               Mass of species in AMU
+                                    Fe   55.8450000
+
+                          Electric Quadrupole Moment (Barn)
+                                    Fe    0.1600000 Isotope 57
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+         |  Element    Atom         Initial            Initial magnetic       |
+         |            Number    spin polarization        moment (uB)     Fix? |
+         |--------------------------------------------------------------------|
+         | Fe             1         0.250000              2.000       F       |
+         | Fe             2         0.250000              2.000       F       |
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+                          Files used for pseudopotentials:
+                                    Fe 3|2.4|2.4|1.0|8|9|10|40:41:32U2U2(qc=5.5)
+
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  4  4  4
+                            with an offset of   0.000  0.000  0.000
+                       Number of kpoints used =             4
+
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+
+                      Cell is a supercell containing 2 primitive cells
+                      Maximum deviation from symmetry = 0.158540E-15     ANG
+
+                      Number of symmetry operations   =          96
+                      Number of ionic constraints     =           3
+                      Point group of crystal =    32: Oh, m-3m, 4/m -3 2/m
+                      Space group of crystal =   229: Im-3m, -I 4 2 3
+
+             Set iprint > 1 for details on symmetry rotations/translations
+
+                         Centre of mass is constrained
+             Set iprint > 1 for details of linear ionic constraints
+
+                         Number of cell constraints= 5
+                         Cell constraints are:  1 1 1 0 0 0
+
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead        0.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                               88.7 MB         0.0 MB |
+| Electronic energy minimisation requirements           1.3 MB         0.0 MB |
+| Force calculation requirements                        0.7 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process           90.0 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating approximate eigenstates for fixed initial Hamiltonian
+Cut-off for approx. calculation is  119.774 eV
+Resetting cut-off to  272.114 eV
+Calculating total energy with cut-off of  272.114 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.78041273E+003  0.00000000E+000                         5.31  <-- SCF
+      1  -1.71369494E+003  2.18479355E+000  -3.33588989E+001       5.42  <-- SCF
+      2  -1.72223870E+003  1.17361387E+000   4.27188422E+000       5.50  <-- SCF
+      3  -1.72224165E+003  1.17357907E+000   1.47153641E-003       5.56  <-- SCF
+      4  -1.73051093E+003  1.03332133E+001   4.13464237E+000       5.63  <-- SCF
+      5  -1.73058063E+003  1.03355935E+001   3.48483197E-002       5.72  <-- SCF
+      6  -1.71567849E+003  5.26072484E+000  -7.45106874E+000       5.80  <-- SCF
+      7  -1.71570783E+003  5.26193056E+000   1.46674575E-002       5.86  <-- SCF
+      8  -1.71569718E+003  4.83880443E+000  -5.32247800E-003       5.93  <-- SCF
+      9  -1.71570136E+003  4.88968694E+000   2.08938289E-003       5.99  <-- SCF
+     10  -1.71572373E+003  4.78854074E+000   1.11838491E-002       6.07  <-- SCF
+     11  -1.71572763E+003  4.74930127E+000   1.95206002E-003       6.14  <-- SCF
+     12  -1.71572947E+003  4.74867026E+000   9.20817467E-004       6.22  <-- SCF
+     13  -1.71573033E+003  4.75990473E+000   4.29243786E-004       6.29  <-- SCF
+     14  -1.71573036E+003  4.74684062E+000   1.22703151E-005       6.34  <-- SCF
+     15  -1.71573035E+003  4.75291054E+000  -5.34428402E-006       6.39  <-- SCF
+     16  -1.71573035E+003  4.75327711E+000   7.65272507E-008       6.44  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Integrated Spin Density     =     4.24442     hbar/2
+Integrated |Spin Density|   =     4.38486     hbar/2
+ 
+Final energy, E             =  -1715.680233767     eV
+Final free energy (E-TS)    =  -1715.730345871     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1715.705289819     eV
+ 
+
+Writing analysis data to Fe.castep_bin
+
+Writing model to Fe.check
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+|                                               ----------------------------- |
+| Approx. total storage required per process           96.5 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+  =====================================================================
+  +                                                                   +
+  +                 Calculation of Spectral Properties                +
+  +                                                                   +
+  + Calculation re-parallelised over 4 processes.                     +
+  + Data distributed by G-vector(4-way), k-point(1-way), band(1-way)  +
+  + Data distributed by G-vector(4-way)                               +
+  +                                                                   +
+  =====================================================================
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        1 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        2 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        3 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        4 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        5 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        6 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        7 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        8 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        9 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       10 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       11 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       12 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       13 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       14 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       15 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       16 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       17 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       18 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       19 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       20 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       21 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       22 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       23 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       24 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       25 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       26 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       27 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       28 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       29 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       30 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       31 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       32 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       33 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       34 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       35 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       36 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       37 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       38 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       39 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       40 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       41 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       42 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       43 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       44 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       45 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       46 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       47 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       48 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       49 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       50 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       51 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       52 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       53 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       54 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       55 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       56 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       57 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       58 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       59 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       60 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       61 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       62 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       63 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       64 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       65 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       66 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       67 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       68 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       69 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       70 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       71 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       72 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       73 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       74 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       75 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        1 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        2 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        3 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        4 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        5 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        6 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        7 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        8 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:        9 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       10 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       11 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       12 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       13 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       14 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       15 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       16 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       17 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       18 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       19 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       20 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       21 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       22 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       23 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       24 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       25 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       26 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       27 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       28 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       29 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       30 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       31 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       32 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       33 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       34 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       35 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       36 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       37 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       38 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       39 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       40 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       41 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       42 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       43 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       44 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       45 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       46 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       47 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       48 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       49 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       50 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       51 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       52 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       53 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       54 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       55 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       56 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       57 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       58 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       59 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       60 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       61 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       62 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       63 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       64 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       65 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       66 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       67 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       68 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       69 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       70 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       71 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       72 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       73 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       74 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Starting k-point:       75 of       75 on this process      |<-- SPEC
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+  Total time to compute matrix elements            187.48 sec |<-- SPEC
+  
+  + Calculation re-parallelised over 4 processes.                     +
+  + Data distributed by k-point(4-way)                                +
+
+ ******************** Symmetrised Forces ********************
+ *                                                          *
+ *               Cartesian components (eV/A)                *
+ * -------------------------------------------------------- *
+ *                         x            y            z      *
+ *                                                          *
+ * Fe              1      0.00000      0.00000      0.00000 *
+ * Fe              2      0.00000      0.00000      0.00000 *
+ *                                                          *
+ ************************************************************
+
+ Pseudo atomic calculation performed for Fe 3d6 4s2
+
+ Converged in 29 iterations to a total energy of -847.7402 eV
+Charge spilling parameter for spin component 1 = 0.11%
+Charge spilling parameter for spin component 2 = 0.36%
+
+                   Orbital Populations                  
+  ---------------------------------------------------------------
+     Ion    Atom   Orbital              Up        Down      Spin
+  ---------------------------------------------------------------
+     Fe     1      Dzz                  0.920     0.290     0.630
+     Fe     1      Dzy                  0.896     0.518     0.379
+     Fe     1      Dzx                  0.830     0.526     0.304
+     Fe     1      Dxx-yy               0.974     0.382     0.592
+     Fe     1      Dxy                  0.828     0.489     0.339
+     Fe     1      S                    0.336     0.352    -0.016
+     Fe     1      Px                   0.042     0.055    -0.012
+     Fe     1      Py                   0.110     0.148    -0.038
+     Fe     1      Pz                   0.124     0.178    -0.054
+     Fe     2      Dzz                  0.921     0.287     0.634
+     Fe     2      Dzy                  0.896     0.520     0.376
+     Fe     2      Dzx                  0.830     0.529     0.301
+     Fe     2      Dxx-yy               0.974     0.379     0.595
+     Fe     2      Dxy                  0.827     0.493     0.335
+     Fe     2      S                    0.336     0.352    -0.016
+     Fe     2      Px                   0.042     0.055    -0.012
+     Fe     2      Py                   0.110     0.149    -0.039
+     Fe     2      Pz                   0.124     0.178    -0.054
+  ---------------------------------------------------------------
+                           Total:      10.122     5.878     4.244
+  ---------------------------------------------------------------
+
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion Spin      s       p       d       f      Total   Charge(e)   Spin(hbar/2)
+==============================================================================================
+  Fe              1   up:     0.336   0.276   4.448   0.000   5.061     0.000        2.122
+                  1   dn:     0.352   0.381   2.206   0.000   2.939
+  Fe              2   up:     0.336   0.276   4.448   0.000   5.061     0.000        2.122
+                  2   dn:     0.352   0.381   2.206   0.000   2.939
+==============================================================================================
+
+                 Bond                   Population        Spin       Length (A)
+================================================================================
+              Fe 1 -- Fe 2                   1.65        -0.14          2.47337
+================================================================================
+
+
+Writing analysis data to Fe.castep_bin
+
+Writing model to Fe.check
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ Fe.bib
+ 
+Initialisation time =      4.85 s
+Calculation time    =    191.08 s
+Finalisation time   =      0.03 s
+Total time          =    195.96 s
+ 
+Overall parallel efficiency rating: Very good (88%)
+ 
+Data was distributed by:-
+k-point (4-way); efficiency rating: Excellent (98%)
+ 
+Parallel notes:
+1) Calculation only took 195.9 s, so efficiency estimates may be inaccurate.
