@@ -2,9 +2,9 @@ from setuptools import find_packages
 from setuptools import setup,Extension
 
 setup(name="CASTEPbands",
-      version="0.0.2",
-      packages=find_packages(),
+      version="0.0.1",
       description="CASTEP module for plotting band structures and phonon dispersions.",
+      packages=find_packages(include=['Source']),
       url="https://github.com/zachary-hawk/CASTEP_bands.git",
       author="Zachary Hawkhead",
       author_email="zachary.hawkhead@ymail.com",
