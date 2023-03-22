@@ -10,4 +10,4 @@ pip install git+https://github.com/zachary-hawk/CASTEP_bands.git
 ```
 
 ## Documentation
-Please see the Wiki page for detailed documentation and examples of how to write scripts with CASTEPbands.
+Please see the [Wiki](https://github.com/zachary-hawk/CASTEP_bands/wiki) page for detailed documentation and examples of how to write scripts with CASTEPbands.
