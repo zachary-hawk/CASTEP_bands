@@ -23,11 +23,7 @@ class Spectral:
         ''' Initalise the class, it will require the CASTEP seed to read the file ''' 
         self.start_time=time.time()
         self.pdos_has_read = False
-        self.pdos_dos=np.array([])
-        self.broadening=None
-        
         # Functions
-
         def _check_sym(vec):
             fracs=np.array([0.5,0.0,0.25,0.75,0.33333333,0.66666667])
             frac=[]
@@ -377,14 +373,7 @@ class Spectral:
 
     def _gradient_read(self):
         ''' Internal function for reading the gradient file .dome_bin. This is used in the calculation of the adaptive broadening. If using  cite Jonathan R. Yates, Xinjie Wang, David Vanderbilt, and Ivo Souza
-        Phys. Rev. B 75, 195121 '''
-
-        try :
-            self.adaptive_weights
-            return
-        except:
-            cont=True
-        
+        Phys. Rev. B 75, 195121 ''' 
         from scipy.io import FortranFile as FF
         try:        
             f=FF(self.seed+'.dome_bin', 'r','>u4')
@@ -578,7 +567,7 @@ class Spectral:
 
         ax.set_xlim(1,len(self.kpoints))
         ax.tick_params(axis='both', direction='in',which='major', labelsize=fontsize*0.8,length=12,width=1.2)
-        ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=False,left=True,width=1.2,direction="in")
+        ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=False,left=True,width=1.2)
         ax.set_xticks(self.high_sym)
         ax.set_xticklabels(self.high_sym_labels)
         ax.minorticks_on()
@@ -757,34 +746,6 @@ class Spectral:
             cross=np.intersect1d(cross,ions)
         return self.raw_pdos[cross,:,:,:]
 
-
-   
-
-
-
-
-    def _gaussian(self,Ek,E,width):
-        dist=Ek-E
-        mask=np.where(np.abs(dist)<5/self.eV)
-        result=np.zeros(np.shape(dist))
-        factor= 1/(width*np.sqrt(2*np.pi))
-        exponent= np.exp(-0.5*np.square(dist[mask]/(width)))
-        result[mask] = factor*exponent
-        return result
-    
-    def _adaptve(self,Ek,E,width):
-        dist=Ek-E
-        mask=np.where(np.abs(dist)<5/self.eV)
-        result=np.zeros(np.shape(dist))
-        factor= 1/(width*np.sqrt(2*np.pi))
-        exponent= np.exp(-0.5*np.square(dist[mask]/(width[mask])))
-        result[mask] = factor*exponent
-        return result
-    
-    
-    def _adaptive(self,Ek,E,width):
-        return 1/(width*np.sqrt(2*np.pi))*np.exp(-0.5*((Ek-E)/(width))**2)
-
     def plot_dos(self,
                  ax,
                  spin_polarised=None,
@@ -840,6 +801,29 @@ class Spectral:
                 
                 return 1/(np.exp(beta*(E-self.Ef))+1)
         
+        def _gaussian(Ek,E,width):
+            dist=Ek-E
+            mask=np.where(np.abs(dist)<5/self.eV)
+            result=np.zeros(np.shape(dist))
+            factor= 1/(width*np.sqrt(2*np.pi))
+            exponent= np.exp(-0.5*np.square(dist[mask]/(width)))
+            result[mask] = factor*exponent
+            return result
+
+        def _adaptve(Ek,E,width):
+            dist=Ek-E
+            mask=np.where(np.abs(dist)<5/self.eV)
+            result=np.zeros(np.shape(dist))
+            factor= 1/(width*np.sqrt(2*np.pi))
+            exponent= np.exp(-0.5*np.square(dist[mask]/(width[mask])))
+            result[mask] = factor*exponent
+            return result
+
+        def _lorentzian(Ek,E,width=width):
+            return 1/(np.pi*width)*(width**2/((Ek-E)**2+width**2))
+
+        def _adaptive(Ek,E,width):
+            return 1/(width*np.sqrt(2*np.pi))*np.exp(-0.5*((Ek-E)/(width))**2)
 
         self.start_time=time.time()
         # Set dedaults for spins
@@ -876,8 +860,8 @@ class Spectral:
             elif self.convert_to_eV and not self.zero_fermi:
                 ax.set_ylabel(r"E (eV)",fontsize=fontsize)
             
-            ax.tick_params(axis='both', which='major', labelsize=fontsize*0.8,length=12,width=1.2,direction="in")
-            ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=False,left=True,width=1.2,direction="in")
+            ax.tick_params(axis='both', which='major', labelsize=fontsize*0.8,length=12,width=1.2)
+            ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=False,left=True,width=1.2)
             
             ax.set_xlabel(r"$\mathit{g}(\mathit{E}$) (states/eV)",fontsize=fontsize)
         else:        
@@ -890,8 +874,8 @@ class Spectral:
             elif self.convert_to_eV and not self.zero_fermi:
                 ax.set_xlabel(r"E (eV)",fontsize=fontsize)
             
-            ax.tick_params(axis='both', which='major', labelsize=fontsize*0.8,length=12,width=1.2,direction="in")
-            ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=True,left=True,width=1.2,direction="in")
+            ax.tick_params(axis='both', which='major', labelsize=fontsize*0.8,length=12,width=1.2)
+            ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=True,left=True,width=1.2)
             
             ax.set_ylabel(r"$\mathit{g}(\mathit{E}$) (states/eV)",fontsize=fontsize)
 
@@ -937,7 +921,6 @@ class Spectral:
 
         # Set up the calculation limits
         E = np.arange(np.min(self.BandStructure),np.max(self.BandStructure),dE)
-        self.dos_energy = E
         #E = np.arange(-2,2,dE)
         
         dos=np.zeros((len(E),self.nspins))
@@ -959,9 +942,7 @@ class Spectral:
         if broadening=='adaptive':
             print("Please cite 'Jonathan R. Yates, Xinjie Wang, David Vanderbilt, and Ivo Souza Phys. Rev. B 75, 195121' in all publications including these DOS.")
             self._gradient_read()
-
-
-        
+            
         # Set up the pdos stuff
         if pdos:
 
@@ -986,13 +967,7 @@ class Spectral:
               spin_dir[:,1]=1
           else:
               spin_dir[:,1]=-1
-        if self.broadening!=broadening:
-            recalculate_dos = True
-        self.broadening=broadening
-        
 
-
-              
         # We now decide if we are plotting a pdos or not
 
         if not pdos:
@@ -1030,7 +1005,7 @@ class Spectral:
     
                     for nb in range(self.nbands):            
                         for ns in range(self.nspins):
-                            all_dos[nb,:,ns,:]=self._gaussian(new_bs[nb,:,ns,:],E,width)*new_kpt_w[:,ns]
+                            all_dos[nb,:,ns,:]=_gaussian(new_bs[nb,:,ns,:],E,width)*new_kpt_w[:,ns]
     
     
                             
@@ -1046,7 +1021,7 @@ class Spectral:
     
                     for nb in range(self.nbands):            
                         for ns in range(self.nspins):
-                            all_dos[nb,:,ns,:]=self._adaptive(new_bs[nb,:,ns,:],E,new_weights[nb,:,ns,:])*new_kpt_w[:,ns]
+                            all_dos[nb,:,ns,:]=_adaptive(new_bs[nb,:,ns,:],E,new_weights[nb,:,ns,:])*new_kpt_w[:,ns]
                 # Done, now store for next time
                 self.all_dos = all_dos
                 #print("Recaculated")
@@ -1091,20 +1066,45 @@ class Spectral:
                         ax.fill_betweenx(E,dos,color=color,alpha=alpha)
     
         else:
+            '''
+            for s in spin_index:
+                for nb in range(self.nbands):
+                    for nk in range(self.n_kpoints):            
+                        if broadening=='adaptive':
+                            # we are going to brute force it for now
+                            temp_dos=_adaptive(self.BandStructure[nb,nk,s],E,self.adaptive_weights[nb,nk,s])*self.kpt_weights[nk]
+                        elif broadening=='gaussian':
+                            # we are going to brute force it for now
+                            temp_dos=_gaussian(self.BandStructure[nb,nk,s],E,width)*self.kpt_weights[nk]
+                        elif broadening=='lorentzian':
+                            # we are going to brute force it for now                
+                            tempdos=_lorentzian(self.BandStructure[nb,nk,s],E)*self.kpt_weights[nk]
+                                        
+                        
+                        else:
+                            raise Exception('Unknown broadening scheme')
+
+                        # figure out the pdos factor
+                        for ispec in pdos_species:
+                            for iorb in pdos_orbitals:
+
+                                pdos_factor = np.sum(self.pdos_filter(ispec,iorb)[:,nb,nk,s])
+                                pdos_dos[ispec,iorb,:,s] = pdos_dos[ispec,iorb,:,s] + temp_dos*pdos_factor
+
+            '''
             if recalculate_pdos:
                 if broadening=='gaussian':
-                    if recalculate_dos:
-                        # Lets change the shape of the bandstructure first
-                        new_bs= np.repeat(self.BandStructure[:,:,:,np.newaxis],len(E),axis=3)
-                        # Change the shape of the kpoint_weights now, add in spin array
-                        new_kpt_w = np.repeat(self.kpt_weights[:,np.newaxis],self.nspins,axis=1)            
-                        # same again for the E axis now
-                        new_kpt_w = np.repeat(new_kpt_w[:,:,np.newaxis],len(E),axis=2)                
-        
-                        for nb in range(self.nbands):            
-                            for ns in range(self.nspins):
-                                all_dos[nb,:,ns,:]=self._gaussian(new_bs[nb,:,ns,:],E,width)*new_kpt_w[:,ns]
-                        
+                    # Lets change the shape of the bandstructure first
+                    new_bs= np.repeat(self.BandStructure[:,:,:,np.newaxis],len(E),axis=3)
+                    # Change the shape of the kpoint_weights now, add in spin array
+                    new_kpt_w = np.repeat(self.kpt_weights[:,np.newaxis],self.nspins,axis=1)            
+                    # same again for the E axis now
+                    new_kpt_w = np.repeat(new_kpt_w[:,:,np.newaxis],len(E),axis=2)                
+    
+                    for nb in range(self.nbands):            
+                        for ns in range(self.nspins):
+                            all_dos[nb,:,ns,:]=_gaussian(new_bs[nb,:,ns,:],E,width)*new_kpt_w[:,ns]
+                    
                     for ispec in pdos_species:
                         for iorb in pdos_orbitals:                    
                             pdos_factor = np.sum(self.pdos_filter(ispec,iorb),axis=0)
@@ -1119,20 +1119,18 @@ class Spectral:
                             
     
                 elif broadening=='adaptive':
-
-                    if recalculate_dos:
-                        # Lets change the shape of the bandstructure first
-                        new_bs= np.repeat(self.BandStructure[:,:,:,np.newaxis],len(E),axis=3)
-                        # Change the shape of the kpoint_weights now, add in spin array
-                        new_kpt_w = np.repeat(self.kpt_weights[:,np.newaxis],self.nspins,axis=1)            
-                        # same again for the E axis now
-                        new_kpt_w = np.repeat(new_kpt_w[:,:,np.newaxis],len(E),axis=2)
-                        new_weights = np.repeat(self.adaptive_weights[:,:,:,np.newaxis],len(E),axis=3)
-        
-                        for nb in range(self.nbands):            
-                            for ns in range(self.nspins):
-                                all_dos[nb,:,ns,:]=self._adaptive(new_bs[nb,:,ns,:],E,new_weights[nb,:,ns,:])*new_kpt_w[:,ns]
-        
+                    # Lets change the shape of the bandstructure first
+                    new_bs= np.repeat(self.BandStructure[:,:,:,np.newaxis],len(E),axis=3)
+                    # Change the shape of the kpoint_weights now, add in spin array
+                    new_kpt_w = np.repeat(self.kpt_weights[:,np.newaxis],self.nspins,axis=1)            
+                    # same again for the E axis now
+                    new_kpt_w = np.repeat(new_kpt_w[:,:,np.newaxis],len(E),axis=2)
+                    new_weights = np.repeat(self.adaptive_weights[:,:,:,np.newaxis],len(E),axis=3)
+    
+                    for nb in range(self.nbands):            
+                        for ns in range(self.nspins):
+                            all_dos[nb,:,ns,:]=_adaptive(new_bs[nb,:,ns,:],E,new_weights[nb,:,ns,:])*new_kpt_w[:,ns]
+    
     
                     for ispec in pdos_species:
                         for iorb in pdos_orbitals:                    
@@ -1148,7 +1146,6 @@ class Spectral:
                             temp_dos= np.sum(temp_dos,axis=0)
                             pdos_dos[ispec,iorb,:,:]= np.swapaxes(temp_dos,0,1)
                 # Done, store for subsequent runs
-                self.all_dos=all_dos
                 self.pdos_dos=pdos_dos
                         
             # Multiply in the FD and spin flips
@@ -1260,370 +1257,6 @@ class Spectral:
 
 
 
-
-    def plot_single_pdos(self,
-                         ax,
-                         species,
-                         orbital,
-                         ion,
-                         spin_polarised=None,
-                         color='black',
-                         spin_up_color='red',
-                         spin_down_color='blue',
-                         spin_share_axis = False,
-                         dE=None,
-                         fontsize=20,
-                         cmap='tab20c',
-                         show_fermi=True,
-                         fermi_line_style="--",
-                         fermi_line_color='0.5',
-                         fermi_linewidth=1,
-                         zero_line=True,
-                         zero_linestyle = "-",
-                         zero_linewidth=1,
-                         zero_line_color="black",
-                         linestyle="-",
-                         linewidth=1.2,
-                         spin_index=None,
-                         Elim=None,
-                         glim=None,
-                         swap_axes=False,
-                         axes_only=False,
-                         labelx=True,
-                         labely=True,
-                         colors=None,                         
-                         shade=False,
-                         alpha=0.4,
-                         broadening="adaptive",
-                         width=0.05,
-                         loc='upper right'):
-        ''' This is a different pdos plot specifically for plotting the individual orbital components of a single ion.'''
-                
-        
-        self.start_time=time.time()
-        # Set dedaults for spins
-        if spin_polarised is None:
-            spin_polarised=self.spin_polarised
-        if self.spin_polarised and spin_index is None:
-            spin_index = [0,1]
-        elif not self.spin_polarised and spin_index is None:
-            spin_index = [0]
-        if spin_index is not None:
-            if not isinstance(spin_index,list) :
-                spin_index=[spin_index]
-                spin_polarised=True
-        # spin colors
-        if spin_polarised:
-            spin_colors= [spin_up_color,spin_down_color]
-
-
-        # Orbital defs
-        orbs=['$s$','$p$','$d$','$f$']
-        # Set energy spacing
-        if dE is None:
-            dE=self.dk
-
-        # Set the boring stuff
-        if swap_axes:
-
-            if self.convert_to_eV  and self.zero_fermi :
-                ax.set_ylabel(r"E-E$_{\mathrm{F}}$ (eV)",fontsize=fontsize)
-            elif not self.convert_to_eV and self.zero_fermi:
-                ax.set_ylabel(r"E-E$_{\mathrm{F}}$ (Ha)",fontsize=fontsize)
-            elif not self.convert_to_eV and  not self.zero_fermi:
-                ax.set_ylabel(r"E (Ha)",fontsize=fontsize)
-            elif self.convert_to_eV and not self.zero_fermi:
-                ax.set_ylabel(r"E (eV)",fontsize=fontsize)
-            
-            ax.tick_params(axis='both', which='major', labelsize=fontsize*0.8,length=12,width=1.2,direction="in")
-            ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=False,left=True,width=1.2,direction="in")
-            
-            ax.set_xlabel(r"$\mathit{g}(\mathit{E}$) (states/eV)",fontsize=fontsize)
-        else:        
-            if self.convert_to_eV and self.zero_fermi:
-                ax.set_xlabel(r"E-E$_{\mathrm{F}}$ (eV)",fontsize=fontsize)
-            elif not self.convert_to_eV and self.zero_fermi:
-                ax.set_xlabel(r"E-E$_{\mathrm{F}}$ (Ha)",fontsize=fontsize)
-            elif not self.convert_to_eV and  not self.zero_fermi:
-                ax.set_xlabel(r"E (Ha)",fontsize=fontsize)
-            elif self.convert_to_eV and not self.zero_fermi:
-                ax.set_xlabel(r"E (eV)",fontsize=fontsize)
-            
-            ax.tick_params(axis='both', which='major', labelsize=fontsize*0.8,length=12,width=1.2,direction="in")
-            ax.tick_params(axis='both', which='minor', labelsize=fontsize*0.8,length=6, right=True, top=False, bottom=True,left=True,width=1.2,direction="in")
-            
-            ax.set_ylabel(r"$\mathit{g}(\mathit{E}$) (states/eV)",fontsize=fontsize)
-
-
-        ax.minorticks_on()
-
-        ax.xaxis.set_minor_locator(matplotlib.ticker.AutoMinorLocator(2))
-        ax.yaxis.set_minor_locator(matplotlib.ticker.AutoMinorLocator(2))
-
-        if not labely:
-            ax.set_ylabel('')
-        if not labelx:
-            ax.set_xlabel('')
-        
-        # energy lims
-        if Elim is not None:
-            if swap_axes:
-                ax.set_ylim(Elim[0],Elim[1])
-            else:
-                ax.set_xlim(Elim[0],Elim[1])
-        if glim is not None:
-            if swap_axes:
-                ax.set_xlim(glim[0],glim[1])
-            else:
-                ax.set_ylim(glim[0],glim[1])
-        # Add in all the lines
-        if show_fermi:
-            if swap_axes:
-                ax.axhline(self.Ef,linestyle=fermi_line_style,c=fermi_line_color)
-            else:
-                ax.axvline(self.Ef,linestyle=fermi_line_style,c=fermi_line_color)
-        if zero_line:
-            if swap_axes:
-                ax.axvline(0,linestyle=zero_linestyle,linewidth=zero_linewidth,color=zero_line_color)
-            else:
-                ax.axhline(0,linestyle=zero_linestyle,linewidth=zero_linewidth,color=zero_line_color)
-        # We have set up the axes, not we terminate if the user only wants axes
-
-
-
-        if axes_only:
-            return
-
-
-
-
-        # Set up the calculation limits
-        E = np.arange(np.min(self.BandStructure),np.max(self.BandStructure),dE)
-        #E = np.arange(-2,2,dE)
-        self.dos_energy = E
-        
-        dos=np.zeros((len(E),self.nspins))
-        spin_dir=np.ones((len(E),self.nspins))
-        all_dos=np.zeros((self.nbands,self.n_kpoints,self.nspins,len(E)))
-
-        # Initialise the class object to prevent recaculation
-        recalculate_dos = True
-        recalculate_pdos= True
-        try:
-            if self.all_dos.shape==all_dos.shape:
-                recalculate_dos = False
-                all_dos=self.all_dos
-        except:
-            recalculate_dos = True
-            
-        
-        if not self.pdos_has_read:                
-            self._pdos_read()
-
-        # Set the size based on these params.
-        n_orbs = len(self.pdos_filter(species,orbital,ion))
-        pdos_dos=np.zeros((n_orbs,len(E),self.nspins))
-            
-        if self.pdos_dos.shape==pdos_dos.shape:
-            recalculate_pdos = False
-            pdos_dos=self.pdos_dos
-        else:
-            recalculate_pdos = True                
-
-
-        # Store the broadening
-        if self.broadening!=broadening:
-            if not recalculate_dos:
-                recalculate_dos = True
-        self.broadening = broadening
-            
-        if broadening=='adaptive':
-            print("Please cite 'Jonathan R. Yates, Xinjie Wang, David Vanderbilt, and Ivo Souza Phys. Rev. B 75, 195121' in all publications including these DOS.")
-            self._gradient_read()
-            
-
-
-
-        # Here are all of the labels coming from castep
-        
-        s=['s']
-        p=['p$_{x}$','p$_{y}$','p$_{z}$']
-        d=['d$_{z^2}$','d$_{zy}$','d$_{zx}$','d$_{x^2-y^2}$','d$_{xy}$']
-        f=['f$_{x^3}$','f$_{y^3}$','f$_{z^3}$','f$_{xyz}$','f$_{z(x^2-y^2)}$','f$_{y(z^2-x^2)}$','f$_{x(y^2-z^2)}$']
-
-        
-
-
-
-        if len(spin_index)==2 and spin_polarised:
-          if spin_share_axis:
-              spin_dir[:,1]=1
-          else:
-              spin_dir[:,1]=-1
-
-
-        if recalculate_dos:
-            
-            if broadening=='gaussian':
-                # Lets change the shape of the bandstructure first
-                new_bs= np.repeat(self.BandStructure[:,:,:,np.newaxis],len(E),axis=3)
-                # Change the shape of the kpoint_weights now, add in spin array
-                new_kpt_w = np.repeat(self.kpt_weights[:,np.newaxis],self.nspins,axis=1)            
-                # same again for the E axis now
-                new_kpt_w = np.repeat(new_kpt_w[:,:,np.newaxis],len(E),axis=2)                
-
-                for nb in range(self.nbands):            
-                    for ns in range(self.nspins):
-                        all_dos[nb,:,ns,:]=self._gaussian(new_bs[nb,:,ns,:],E,width)*new_kpt_w[:,ns]
-                
-                for iorb in range(n_orbs):                    
-                    pdos_factor = self.pdos_filter(species,orbital,ion)[iorb]
-                    pdos_factor= np.repeat(pdos_factor[:,:,:,np.newaxis],len(E),axis=3)
-                    # Multiply in the factor
-                    temp_dos = all_dos *pdos_factor 
-                    
-                    # Sum over the bands, kpoints
-                    temp_dos= np.sum(temp_dos,axis=0)
-                    temp_dos= np.sum(temp_dos,axis=0)
-                    pdos_dos[iorb,:,:]= np.swapaxes(temp_dos,0,1)
-                        
-
-            elif broadening=='adaptive':
-                # Lets change the shape of the bandstructure first
-                new_bs= np.repeat(self.BandStructure[:,:,:,np.newaxis],len(E),axis=3)
-                # Change the shape of the kpoint_weights now, add in spin array
-                new_kpt_w = np.repeat(self.kpt_weights[:,np.newaxis],self.nspins,axis=1)            
-                # same again for the E axis now
-                new_kpt_w = np.repeat(new_kpt_w[:,:,np.newaxis],len(E),axis=2)
-                new_weights = np.repeat(self.adaptive_weights[:,:,:,np.newaxis],len(E),axis=3)
-
-                for nb in range(self.nbands):            
-                    for ns in range(self.nspins):
-                        all_dos[nb,:,ns,:]=self._adaptive(new_bs[nb,:,ns,:],E,new_weights[nb,:,ns,:])*new_kpt_w[:,ns]
-
-
-                for iorb in range(n_orbs):
-                    pdos_factor = self.pdos_filter(species,orbital,ion)[iorb,:,:,:]
-                    #print(self.atoms[ispec],orbs[iorb],np.max(pdos_factor),np.min(pdos_factor))
-                    pdos_factor= np.repeat(pdos_factor[:,:,:,np.newaxis],len(E),axis=3)
-                    # Multiply in the factor
-                    
-                    temp_dos = all_dos *pdos_factor 
-                    
-                    # Sum over the bands, kpoints
-                    temp_dos= np.sum(temp_dos,axis=0)
-                    temp_dos= np.sum(temp_dos,axis=0)
-                    pdos_dos[iorb,:,:]= np.swapaxes(temp_dos,0,1)
-            # Done, store for subsequent runs
-            self.pdos_dos=pdos_dos
-            self.all_dos = all_dos
-            
-        # Multiply in the FD and spin flips
-
-        pdos_dos=self.pdos_dos
-        pdos_dos=pdos_dos*spin_dir
-
-            
-        # Sum over spins if not spin_polarised
-        if not spin_polarised and self.spin_polarised:
-            pdos_dos=np.sum(pdos_dos,axis=3)
-
-
-        
-        # Set up the color stuff
-
-        if colors is not None:
-            try:
-                assert len(colors)==n_orbs
-                color=colors
-                custom_cycler = (cycler.cycler(color=color))
-                ax.set_prop_cycle(custom_cycler)
-            
-            except:
-                warnings.warn("Warning: colors does not match number of suborbitals")
-
-                color = plt.cm.bwr(np.linspace(0,1,n_orbs))
-                for i in range(len(color)):
-                    if np.all(np.round(color[i,0:3])==1):
-                        color[i,0:3] = [0.5,0.5,0.5]
-                custom_cycler = (cycler.cycler(color=color))
-                ax.set_prop_cycle(custom_cycler)
-           
-        else:
-
-            color = plt.cm.bwr(np.linspace(0,1,n_orbs))
-
-            for i in range(len(color)):
-                if np.all(np.round(color[i,0:3])==1):
-                    color[i,0:3] = [0.5,0.5,0.5]
-            custom_cycler = (cycler.cycler(color=color))
-            ax.set_prop_cycle(custom_cycler)
-
-
-        # Actually plot now
-
-        if orbital == 0:
-            orbs=s
-        elif orbital == 1:
-            orbs=p
-        elif orbital == 2:
-            orbs=d
-        else:
-            orbs=f
-            
-            
-        if not swap_axes:
-
-            for iorb in range(n_orbs):
-                color=next(ax._get_lines.prop_cycler)['color']
-                for s in spin_index:                                
-                    ax.plot(E,pdos_dos[iorb,:,s],linestyle=linestyle,linewidth=linewidth,label=self.atoms[species]+"("+orbs[iorb]+')',color=color,zorder=iorb)
-                    if shade:
-                        ax.fill_between(E,pdos_dos[iorb,:,s],alpha=alpha,color=color,zorder=iorb)
-
-        else:
-
-            for iorb in range(n_orbs):
-                color=next(ax._get_lines.prop_cycler)['color']        
-                for s in spin_index:                                
-                    ax.plot(pdos_dos[iorb,:,s],E,linestyle=linestyle,linewidth=linewidth,label=self.atoms[species]+"("+orbs[iorb]+')',color=color,zorder=iorb)
-                    if shade:
-                        ax.fill_betweenx(E,pdos_dos[iorb,:,s],alpha=alpha,color=color,zorder=iorb)
-                        
-
-
-        # end pdos check 
-
-
-
-        handles, labels = plt.gca().get_legend_handles_labels()
-        
-        ids = np.unique(labels, return_index=True)[1]
-        labels=np.array(labels)[np.sort(ids)]
-
-        handles = [handles[i] for i in np.sort(ids)]
-
-        ax.legend(handles, labels, loc=loc,fontsize=fontsize*0.8,fancybox=True,frameon=False,handlelength=1.5,handletextpad=0.2)
-
-
-        #print("Total time =",time.time()-self.start_time)
-        # Autoscaling
-        if swap_axes:
-            if glim is None and Elim is not None: 
-                self._autoscale(ax,'x')
-        else:
-            if Elim is not None and glim is None:
-                self._autoscale(ax,'y')
-        return
-
-
-
-
-
-
-
-              
-
                 
     def kpt_where(self,label):
         ''' Find the kpoint indices that correspond to a particular high symmetry label'''
@@ -1695,4 +1328,3 @@ class Spectral:
         else:
             raise ValueError("This type of object isn't implemented yet")
         return x, y
-
